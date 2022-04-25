@@ -18,7 +18,7 @@
       "description": "Kemeja Pria yang diperbarui dengan bahan yang lebih lembut sehingga terasa lebih kasual.",
       "price": 399000,
       "mainImg": "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/448383/item/idgoods_65_448383.jpg?width=1600&impolicy=quality_75",
-      "categoryId": "1",
+      "category": "Top Collections",
       "userId": "1"
     },
     {
@@ -28,7 +28,7 @@
       "description": "Celana jogger Pria dengan desain easy waist yang terasa nyaman. Kini dengan tekstur lebih lembut.",
       "price": 299000,
       "mainImg": "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/449747/item/idgoods_56_449747.jpg?width=1600&impolicy=quality_75",
-      "categoryId": "2",
+      "category": "Bottoms Collections",
       "userId": "1"
     }
   ],
