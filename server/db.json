@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "mujibra",
+      "email": "mujib@gmail.com",
+      "password": "123456",
+      "role": "admin",
+      "phoneNumber": "082312359653",
+      "address": "Tangerang"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "MEN Kemeja Oversized",
+      "slug": "Hickory Kerah Tegak Lengan Panjang",
+      "description": "Kemeja Pria yang diperbarui dengan bahan yang lebih lembut sehingga terasa lebih kasual.",
+      "price": 399000,
+      "mainImg": "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/448383/item/idgoods_65_448383.jpg?width=1600&impolicy=quality_75",
+      "categoryId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "name": "MEN Celana Jogger",
+      "slug": "Relax",
+      "description": "Celana jogger Pria dengan desain easy waist yang terasa nyaman. Kini dengan tekstur lebih lembut.",
+      "price": 299000,
+      "mainImg": "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/449747/item/idgoods_56_449747.jpg?width=1600&impolicy=quality_75",
+      "categoryId": "2",
+      "userId": "1"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Top Collections"
+    },
+    {
+      "id": "2",
+      "name": "Bottoms Collections"
+    }
+  ],
+  "images": [
+    {
+      "id": "1",
+      "productId": "1",
+      "imgUrl": "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/448383/sub/idgoods_448383_sub2.jpg?width=1600&impolicy=quality_75"
+    },
+    {
+      "id": "1",
+      "productId": "2",
+      "imgUrl": "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/449747/sub/idgoods_449747_sub7.jpg?width=1600&impolicy=quality_75"
+    }
+  ]
+}
