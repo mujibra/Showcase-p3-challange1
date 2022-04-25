@@ -13,26 +13,24 @@ Struktur Folder:
 
 Target:
 
-- [ ] Lecture - React Intro
-- [ ] React: Class Component vs Function Component
-- [ ] Mempelajari State menggunakan useState
-- [ ] Mengirim Props baik berupa sebuah state atau function
-- [ ] Event Handling (onClick, onChange, onSubmit)
-- [ ] Conditional Rendering di dalam React
-- [ ] Looping List of Data di dalam React
-- [ ] Lifecycle component menggunakan useEffect
-- [ ] Membuat server (json-server)
-- [ ] Membuat react app untuk client-user (Styling)
-- [ ] Membuat react app untuk client-admin (CRUD)
-- [ ] Menentukan Thema Aplikasi
-- [ ] Menentukan Design dan pemilihan CSS Framework
+- [v] Lecture - React Intro
+- [v] React: Class Component vs Function Component
+- [v] Mempelajari State menggunakan useState
+- [v] Mengirim Props baik berupa sebuah state atau function
+- [v] Event Handling (onClick, onChange, onSubmit)
+- [v] Conditional Rendering di dalam React
+- [v] Looping List of Data di dalam React
+- [v] Lifecycle component menggunakan useEffect
+- [v] Membuat server (json-server)
+- [-] Membuat react app untuk client-user (Styling)
+- [v] Membuat react app untuk client-admin (CRUD)
+- [v] Menentukan Thema Aplikasi
+- [v] Menentukan Design dan pemilihan CSS Framework
 
 **Report:**
 
-...
-
-> contoh: Hari ini saya belajar React Component. Saya memahami bagaimana cara React bekerja. Lifecycle yang sudah saya coba adalah componentDidMount yang digunakan untuk fetch data dst. Namun saya belum mencoba menggunakan onSubmit dikarenakan data yang didapat belum sesuai.
-> Pada tugas ini, saya memilih Tema A dengan mengambil referensi dari B. Saya juga akan menggunakan CSS Framework yaitu Tailwind CSS
+> Hari ini saya full mempelahjari tailwind karna dari phase 1 selalu memakai bootstrap, tadi saya sudah bisa menambahkan product baru, dan sudah bisa fetch data, tetapi untuk yang user masih belum sempat saya kerjakan, dan akan saya kerjakan setelah selesai di admin
+> pada tugas ini, saya memilih tema showcase berupa website jual beli pakaian dan mengambil referensi dari uniqlo maupun zalora, saya juga akan menggunakan css framework yaitu Tailwind CSS
 
 ## W1D2
 

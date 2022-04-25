@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ItemForm() {
   const [name, setName] = useState("");
@@ -35,7 +35,7 @@ export default function ItemForm() {
   };
   return (
     <div>
-      <div className="">
+      <div className="pt-6">
         <div className="mt-5 md:mt-0 md:col-span-2">
           <form onSubmit={handleSubmit}>
             <div className="shadow overflow-hidden sm:rounded-md">
