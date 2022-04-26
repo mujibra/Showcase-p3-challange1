@@ -2,12 +2,12 @@ import { useState } from "react";
 
 export default function ItemForm() {
   const [name, setName] = useState("");
-  const [slug, setSlug] = useState("Relax");
+  const [slug] = useState("Relax");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [mainImg, setMainImg] = useState("");
-  const [category, setCategory] = useState("");
-  const [userId, setUserId] = useState("1");
+  const [categoryId, setCategoryId] = useState("");
+  const [userId] = useState("1");
   const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = (e) => {
@@ -18,7 +18,7 @@ export default function ItemForm() {
       description,
       price,
       mainImg,
-      category,
+      categoryId,
       userId,
     };
 
@@ -80,15 +80,16 @@ export default function ItemForm() {
               Category
             </label>
             <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              value={categoryId}
+              onChange={(e) => setCategoryId(e.target.value)}
               id="country"
               name="country"
               autoComplete="country-name"
               className="p-2.5 mb-6 mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 sm:text-sm"
             >
-              <option value="Top Collections">Top Collection</option>
-              <option value="Bottoms Collections">Bottoms Collection</option>
+              <option value="1">Tops Collection</option>
+              <option value="2">Bottoms Collection</option>
+              <option value="2">Outwear Collection</option>
             </select>
           </div>
           <div>
