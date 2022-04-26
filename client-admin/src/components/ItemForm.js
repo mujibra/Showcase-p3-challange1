@@ -39,7 +39,7 @@ export default function ItemForm() {
         <form onSubmit={handleSubmit}>
           <div>
             <label
-              for="name"
+              htmlFor="name"
               className="block text-sm font-medium text-gray-700"
             >
               Name
@@ -50,13 +50,13 @@ export default function ItemForm() {
               type="text"
               name="first-name"
               id="first-name"
-              autocomplete="given-name"
+              autoComplete="given-name"
               className="p-2.5 mb-6 mt-1 focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
           </div>
           <div>
             <label
-              for="first-name"
+              htmlFor="first-name"
               className="block text-sm font-medium text-gray-700"
             >
               Description
@@ -67,14 +67,14 @@ export default function ItemForm() {
               type="text"
               name="first-name"
               id="first-name"
-              autocomplete="given-name"
+              autoComplete="given-name"
               className="p-2.5 mb-6 mt-1 focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
           </div>
 
           <div>
             <label
-              for="country"
+              htmlFor="country"
               className="block text-sm font-medium text-gray-700"
             >
               Category
@@ -84,7 +84,7 @@ export default function ItemForm() {
               onChange={(e) => setCategory(e.target.value)}
               id="country"
               name="country"
-              autocomplete="country-name"
+              autoComplete="country-name"
               className="p-2.5 mb-6 mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 sm:text-sm"
             >
               <option value="Top Collections">Top Collection</option>
@@ -93,7 +93,7 @@ export default function ItemForm() {
           </div>
           <div>
             <label
-              for="last-name"
+              htmlFor="last-name"
               className="block text-sm font-medium text-gray-700"
             >
               Price
@@ -104,14 +104,14 @@ export default function ItemForm() {
               type="text"
               name="last-name"
               id="last-name"
-              autocomplete="family-name"
+              autoComplete="family-name"
               className="p-2.5 mb-6 mt-1 focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
           </div>
 
           <div>
             <label
-              for="email-address"
+              htmlFor="email-address"
               className="block text-sm font-medium text-gray-700"
             >
               Image
@@ -122,7 +122,7 @@ export default function ItemForm() {
               type="text"
               name="email-address"
               id="email-address"
-              autocomplete="email"
+              autoComplete="email"
               className="p-2.5 mb-6 mt-1 focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
           </div>
