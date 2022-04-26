@@ -25,10 +25,10 @@ export default function HomePage() {
   };
   return (
     <div className="flex flex-row">
-      <div className="">
+      <div className="basis-2/12">
         <Navbar></Navbar>
       </div>
-      <div className="basis-4/5 bg-sky-100 h-screen pt-6">
+      <div className="basis-10/12 bg-sky-100 h-screen pt-6">
         <div>
           <button
             onClick={pageLoadHandler}
@@ -39,16 +39,28 @@ export default function HomePage() {
           </button>
         </div>
         {!pageLoad && (
-          <div className="flex justify-center pt-6">
-            <table className="table-auto">
-              <thead>
+          <div className="p-4 flex justify-center pt-6 relative overflow-x-auto  sm:rounded-lg">
+            <table className=" table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                  <th>No</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>Main Image</th>
+                  <th scope="col" className="px-6 py-3">
+                    No
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Name
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Description
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Category
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Price
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Main Image
+                  </th>
                 </tr>
               </thead>
               {products.map((product) => (
@@ -58,7 +70,7 @@ export default function HomePage() {
           </div>
         )}
         {pageLoad && (
-          <div className="mt-10 sm:mt-0 flex justify-center">
+          <div className="">
             <ItemForm></ItemForm>
           </div>
         )}

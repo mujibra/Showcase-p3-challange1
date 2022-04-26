@@ -3,7 +3,7 @@ import logo from "../button.png";
 export default function Navbar() {
   return (
     <div>
-      <div class="flex">
+      <div class="flex justify-center">
         <div class="flex-shrink-0 bg-white p-5">
           <div class="flex justify-center">
             <img className="h-20" src={logo} />
