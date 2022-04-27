@@ -36,7 +36,11 @@ export default function ItemForm() {
   return (
     <div className="flex justify-center ">
       <div className="pt-6 w-2/5 ">
-        <form onSubmit={handleSubmit}>
+        <p className="mb-10">Add New Menu</p>
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-5 rounded-md shadow-mb"
+        >
           <div>
             <label
               htmlFor="name"

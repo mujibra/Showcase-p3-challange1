@@ -94,7 +94,7 @@ export default function Example() {
                 </div>
                 <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
                 <p className="mt-1 text-lg font-medium text-gray-900">
-                  Rp {product.price.toLocaleString()}
+                  IDR {product.price}
                 </p>
               </a>
             ))}
