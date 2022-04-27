@@ -1,4 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
+import { Link } from "react-router-dom";
+
 export default function Example() {
   return (
     <div className="relative h-screen bg-white overflow-hidden">
@@ -14,12 +16,12 @@ export default function Example() {
                 decide what you are, what you want to express by the way you
                 dress and the way to live.” – Gianni Versace
               </p>
-              <a
-                href="#"
+              <Link
+                to="/products"
                 className="inline-block w-2/5 s bg-indigo-600 border border-transparent rounded-md mt-5 py-3 px-8 font-medium text-white hover:bg-indigo-700"
               >
                 Shop Collection
-              </a>
+              </Link>
             </div>
           </div>
           <div>

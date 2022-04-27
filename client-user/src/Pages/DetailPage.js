@@ -1,29 +1,7 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    theme: {
-      extend: {
-        gridTemplateRows: {
-          '[auto,auto,1fr]': 'auto auto 1fr',
-        },
-      },
-    },
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StarIcon } from "@heroicons/react/solid";
 import { RadioGroup } from "@headlessui/react";
+import { useParams } from "react-router-dom";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -84,8 +62,30 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const [data, setData] = useState([]);
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const { id } = useParams();
+
+  const detailHandler = () => {
+    fetch(`http://localhost:3001/products/${id}`, {
+      method: "GET",
+      headers: { "Cache-Control": "no-cache" },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.message);
+        }
+        return response.json();
+      })
+      .then((data) => setData(data), console.log(data))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    detailHandler();
+  }, []);
 
   return (
     <div className="bg-white">
