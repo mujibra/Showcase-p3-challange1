@@ -2,12 +2,12 @@ import { useState } from "react";
 
 export default function ItemForm() {
   const [name, setName] = useState("");
-  const [slug, setSlug] = useState("Relax");
+  const [slug] = useState("Relax");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [mainImg, setMainImg] = useState("");
-  const [category, setCategory] = useState("");
-  const [userId, setUserId] = useState("1");
+  const [categoryId, setCategoryId] = useState("");
+  const [userId] = useState("1");
   const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = (e) => {
@@ -18,7 +18,7 @@ export default function ItemForm() {
       description,
       price,
       mainImg,
-      category,
+      categoryId,
       userId,
     };
 
@@ -39,7 +39,7 @@ export default function ItemForm() {
         <form onSubmit={handleSubmit}>
           <div>
             <label
-              for="name"
+              htmlFor="name"
               className="block text-sm font-medium text-gray-700"
             >
               Name
@@ -50,13 +50,13 @@ export default function ItemForm() {
               type="text"
               name="first-name"
               id="first-name"
-              autocomplete="given-name"
+              autoComplete="given-name"
               className="p-2.5 mb-6 mt-1 focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
           </div>
           <div>
             <label
-              for="first-name"
+              htmlFor="first-name"
               className="block text-sm font-medium text-gray-700"
             >
               Description
@@ -67,33 +67,34 @@ export default function ItemForm() {
               type="text"
               name="first-name"
               id="first-name"
-              autocomplete="given-name"
+              autoComplete="given-name"
               className="p-2.5 mb-6 mt-1 focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
           </div>
 
           <div>
             <label
-              for="country"
+              htmlFor="country"
               className="block text-sm font-medium text-gray-700"
             >
               Category
             </label>
             <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              value={categoryId}
+              onChange={(e) => setCategoryId(e.target.value)}
               id="country"
               name="country"
-              autocomplete="country-name"
+              autoComplete="country-name"
               className="p-2.5 mb-6 mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 sm:text-sm"
             >
-              <option value="Top Collections">Top Collection</option>
-              <option value="Bottoms Collections">Bottoms Collection</option>
+              <option value="1">Tops Collection</option>
+              <option value="2">Bottoms Collection</option>
+              <option value="2">Outwear Collection</option>
             </select>
           </div>
           <div>
             <label
-              for="last-name"
+              htmlFor="last-name"
               className="block text-sm font-medium text-gray-700"
             >
               Price
@@ -104,14 +105,14 @@ export default function ItemForm() {
               type="text"
               name="last-name"
               id="last-name"
-              autocomplete="family-name"
+              autoComplete="family-name"
               className="p-2.5 mb-6 mt-1 focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
           </div>
 
           <div>
             <label
-              for="email-address"
+              htmlFor="email-address"
               className="block text-sm font-medium text-gray-700"
             >
               Image
@@ -122,7 +123,7 @@ export default function ItemForm() {
               type="text"
               name="email-address"
               id="email-address"
-              autocomplete="email"
+              autoComplete="email"
               className="p-2.5 mb-6 mt-1 focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             />
           </div>

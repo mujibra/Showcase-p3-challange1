@@ -1,24 +1,17 @@
 import Navbar from "../components/Navbar";
 import Table from "../components/Table";
 import ItemForm from "../components/ItemForm";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useFetch from "../hooks/useFetch";
 
 export default function HomePage() {
-  const [products, setproduct] = useState([]);
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useFetch("http://localhost:8080/products");
+
   const [pageLoad, setPageLoad] = useState(false);
-  useEffect(() => {
-    fetch("http://localhost:8080/products")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.message);
-        }
-        return response.json();
-      })
-      .then((data) => setproduct(data))
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   const pageLoadHandler = () => {
     setPageLoad(true);
@@ -63,9 +56,25 @@ export default function HomePage() {
                   </th>
                 </tr>
               </thead>
-              {products.map((product) => (
-                <Table product={product} key={product.id}></Table>
-              ))}
+              {isLoading && (
+                <tbody>
+                  <tr>
+                    <td>Loading...</td>
+                  </tr>
+                </tbody>
+              )}
+              {isError && (
+                <tbody>
+                  <tr>
+                    <td>Error...</td>
+                  </tr>
+                </tbody>
+              )}
+              {!isLoading &&
+                !isError &&
+                products.map((product) => (
+                  <Table product={product} key={product.id}></Table>
+                ))}
             </table>
           </div>
         )}
