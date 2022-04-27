@@ -1,6 +1,7 @@
 import Table from "../components/Table";
 import ItemForm from "../components/ItemForm";
 import AddUserPage from "../components/AddUserPage";
+import CategoriesTable from "../components/CategoriesTable";
 import logo from "../button.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -9,23 +10,34 @@ export default function HomePage() {
   const [table, setTable] = useState(true);
   const [productForm, setProductForm] = useState(false);
   const [userForm, setUserForm] = useState(false);
+  const [category, setCategory] = useState(false);
 
   const addProductHandler = () => {
     setTable(false);
     setProductForm(true);
     setUserForm(false);
+    setCategory(false);
   };
 
   const tableHandler = () => {
     setTable(true);
     setProductForm(false);
     setUserForm(false);
+    setCategory(false);
   };
 
   const addUserHandler = () => {
     setTable(false);
     setProductForm(false);
     setUserForm(true);
+    setCategory(false);
+  };
+
+  const categoryHandler = () => {
+    setTable(false);
+    setProductForm(false);
+    setUserForm(false);
+    setCategory(true);
   };
 
   return (
@@ -60,7 +72,8 @@ export default function HomePage() {
                 </svg>
                 <span className="ml-2.5">Dashboard</span>
               </button>
-              <a
+              <button
+                onClick={categoryHandler}
                 className="flex  mt-2.5 text-gray-600 hover:text-blue-600 p-2"
                 href="#profile"
               >
@@ -85,7 +98,7 @@ export default function HomePage() {
                   ></path>
                 </svg>
                 <span className="ml-2.5">Categories</span>
-              </a>
+              </button>
               <button
                 onClick={addUserHandler}
                 className="flex  mt-2.5 text-gray-600 hover:text-blue-600 p-1"
@@ -120,7 +133,8 @@ export default function HomePage() {
         </div>
       </div>
       <div className="basis-10/12 bg-sky-100 h-screen pt-6">
-        <div>
+        <div className="flex justify-between px-10">
+          <p className="font-medium text-xl">Product List</p>
           <button
             onClick={addProductHandler}
             type="button"
@@ -130,11 +144,13 @@ export default function HomePage() {
           </button>
         </div>
 
-        {table && <Table></Table>}
+        {table && <Table />}
 
-        {productForm && <ItemForm></ItemForm>}
+        {category && <CategoriesTable />}
 
-        {userForm && <AddUserPage></AddUserPage>}
+        {productForm && <ItemForm />}
+
+        {userForm && <AddUserPage />}
       </div>
     </div>
   );

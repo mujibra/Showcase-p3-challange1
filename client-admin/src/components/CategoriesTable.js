@@ -1,5 +1,5 @@
 import useFetch from "../hooks/useFetch";
-import ListTable from "./ListTable";
+import ListCategories from "./ListCategories";
 
 export default function Table() {
   const {
@@ -10,7 +10,7 @@ export default function Table() {
 
   return (
     <div className="p-4 flex justify-center pt-6 relative overflow-x-auto  sm:rounded-lg">
-      <table className="table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <table className=" table-auto w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="px-6 py-3">
@@ -20,16 +20,10 @@ export default function Table() {
               Name
             </th>
             <th scope="col" className="px-6 py-3">
-              Created By
+              Created At
             </th>
             <th scope="col" className="px-6 py-3">
-              Category
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Price
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Main Image
+              Updated At
             </th>
             <th scope="col" className="px-6 py-3">
               Action
@@ -52,8 +46,11 @@ export default function Table() {
         )}
         {!isLoading &&
           !isError &&
-          products.map((product) => (
-            <ListTable product={product} key={product.id}></ListTable>
+          products[0].categories.map((category) => (
+            <ListCategories
+              category={category}
+              key={category.id}
+            ></ListCategories>
           ))}
       </table>
     </div>

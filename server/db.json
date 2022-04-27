@@ -21,12 +21,20 @@
       "description": "Shirt made from 100% high-quality natural linen with coolness and sheen. Relaxed fit.",
       "price": 499000,
       "mainImg": "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/446997/item/idgoods_66_446997.jpg?width=1600&impolicy=quality_75",
-      "categoryId": "Top Collections",
+      "categoryId": "1",
       "userId": "1",
       "categories": [
         {
           "id": "1",
           "name": "Tops Collections"
+        },
+        {
+          "id": "2",
+          "name": "Bottoms Collections"
+        },
+        {
+          "id": "3",
+          "name": "Outwear Collections"
         }
       ],
       "images": [
