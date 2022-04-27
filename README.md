@@ -36,16 +36,16 @@ Target:
 
 Target:
 
-- [ ] Lecture - Custom Hooks
-- [ ] Rules of Hooks
-- [ ] Lecture - React-Router
-- [ ] Membuat router user-side (min: home, detail)
+- [v] Lecture - Custom Hooks
+- [v] Rules of Hooks
+- [v] Lecture - React-Router
+- [v] Membuat router user-side (min: home, detail)
 - [ ] Membuat router admin-side (min: login, add admin, CRUD main entitas, CRUD another entitas)
 - [ ] Membuat privateRoute untuk admin
 
 **Report:**
 
-...
+> Sudah bisa menerapkan routes tinggal di rampungkan saja susai target
 
 ## W1D3
 

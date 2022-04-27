@@ -1,4 +1,5 @@
 import useFetch from "../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 const callouts = [
   {
     name: "New Arrivals",
@@ -29,11 +30,17 @@ const callouts = [
 ];
 
 export default function Example() {
+  const navigate = useNavigate();
+
   const {
     data: products,
     isLoading,
     isError,
-  } = useFetch("http://localhost:8080/products");
+  } = useFetch("http://localhost:3001/products");
+
+  const handleDetail = (id) => {
+    navigate(`/detail/${id}`);
+  };
 
   return (
     <div className="bg-white">
@@ -73,7 +80,11 @@ export default function Example() {
           {!isLoading &&
             !isError &&
             products.map((product) => (
-              <a key={product.id} href="#" className="group">
+              <a
+                onClick={() => handleDetail(product.id)}
+                key={product.id}
+                className="group"
+              >
                 <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                   <img
                     src={product.mainImg}
