@@ -20,6 +20,7 @@ export default function useFetch(url) {
       .finally(() => {
         setIsLoading(false);
       });
+    // eslint-disable-next-line
   }, []);
 
   return {
