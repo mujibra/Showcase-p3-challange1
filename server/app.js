@@ -1,9 +1,8 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 3001;
 const cors = require("cors");
-const userRoute = require("./routes/users");
-const foodRoute = require("./routes/products");
+const productRoute = require("./routes/products");
 const UserController = require("./controllers/userController");
 const errorHandler = require("./middlewares/errorHandler");
 
@@ -17,8 +16,7 @@ app.post("/register", UserController.create);
 // LOGIN USER
 app.post("/login", UserController.login);
 
-app.use("/users", userRoute);
-app.use("/products", foodRoute);
+app.use("/products", productRoute);
 
 app.use(errorHandler);
 
