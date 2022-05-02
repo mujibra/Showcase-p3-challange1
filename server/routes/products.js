@@ -13,9 +13,7 @@ router.get("/", ProductController.list);
 router.post("/", ProductController.create);
 
 // GET FOOD BY ID
-router.get("/:id", ProductController.foodId);
-
-router.patch("/:id", getAccess, ProductController.addStatus);
+router.get("/:id", ProductController.productId);
 
 // UPDATE FOOD
 router.put("/:id", getAccess, ProductController.update);

@@ -4,7 +4,7 @@ const { authentication } = require("../middlewares/auth");
 class FoodController {
   static async list(req, res, next) {
     try {
-      let food = await Product.findAll({
+      let product = await Product.findAll({
         order: [["id", "ASC"]],
         include: [
           {
@@ -15,13 +15,13 @@ class FoodController {
           },
         ],
       });
-      res.status(200).json(food);
+      res.status(200).json(product);
     } catch (error) {
       next(error);
     }
   }
 
-  static async foodId(req, res, next) {
+  static async productId(req, res, next) {
     try {
       let food = await Food.findOne({
         include: [
