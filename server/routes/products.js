@@ -16,7 +16,7 @@ router.post("/", ProductController.create);
 router.get("/:id", ProductController.productId);
 
 // UPDATE FOOD
-router.put("/:id", getAccess, ProductController.update);
+router.put("/:id", getAccess, ProductController.editFood);
 
 router.delete("/:id", getAccess, ProductController.delete);
 

@@ -39,10 +39,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notEmpty: {
-            msg: "Name is required",
+            msg: "Slug is required",
           },
           notNull: {
-            msg: "Name is required",
+            msg: "Slug is required",
           },
         },
       },
@@ -51,22 +51,19 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notEmpty: {
-            msg: "Name is required",
+            msg: "Description is required",
           },
           notNull: {
-            msg: "Name is required",
+            msg: "Description is required",
           },
         },
       },
       price: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-          notEmpty: {
-            msg: "Name is required",
-          },
           notNull: {
-            msg: "Name is required",
+            msg: "Price is required",
           },
         },
       },
@@ -75,10 +72,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notEmpty: {
-            msg: "Name is required",
+            msg: "Image URL is required",
           },
           notNull: {
-            msg: "Name is required",
+            msg: "Image URL is required",
           },
         },
       },

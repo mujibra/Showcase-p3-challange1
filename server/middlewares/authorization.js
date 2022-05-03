@@ -1,4 +1,4 @@
-const { User, Food } = require("../models");
+const { User, Product } = require("../models");
 
 const getAccess = async (req, res, next) => {
   try {
@@ -6,8 +6,8 @@ const getAccess = async (req, res, next) => {
     const userId = req.rightUser.id;
     const userRole = req.rightUser.role;
 
-    const searchFood = await Food.findByPk(foodId);
-    if (!searchFood) {
+    const searchProduct = await Product.findByPk(foodId);
+    if (!searchProduct) {
       throw { name: "NotFound" };
     }
     const match = await User.findOne({
@@ -16,17 +16,13 @@ const getAccess = async (req, res, next) => {
         email: req.rightUser.email,
       },
     });
-    console.log(match);
     if (!match) {
       throw { name: "BadRequest" };
     }
     if (req.method === "PUT" && userRole !== "Admin") {
       throw { name: "BadRequest" };
     }
-    if (req.method === "PATCH" && userRole !== "Admin") {
-      throw { name: "BadRequest" };
-    }
-    if (userId !== searchFood.UserId && userRole !== "Admin") {
+    if (userId !== searchProduct.UserId && userRole !== "Admin") {
       throw { name: "Forbidden" };
     }
     next();

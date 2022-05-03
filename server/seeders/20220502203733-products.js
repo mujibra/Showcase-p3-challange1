@@ -2,15 +2,15 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    const data = require("../database/images.json");
+    const data = require("../database/products.json");
 
     data.forEach((el) => {
       (el.createdAt = new Date()), (el.updatedAt = new Date());
     });
-    await queryInterface.bulkInsert("Images", data, {});
+    await queryInterface.bulkInsert("Products", data, {});
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("Images", null, {});
+    await queryInterface.bulkDelete("Products", null, {});
   },
 };
