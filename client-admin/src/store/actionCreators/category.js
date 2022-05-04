@@ -1,6 +1,7 @@
 import { SET_CATEGORY, CREATE_CATEGORY } from "../actionTypes";
 
-const urlServer = "http://localhost:8080/products/categories";
+const urlServer =
+  "https://buttons-p3-challange-1-server.herokuapp.com/products/categories";
 
 export function fetchCategories() {
   return async (dispatch) => {

@@ -5,7 +5,8 @@ import {
   SET_PRODUCTS_DETAIL,
 } from "../actionTypes";
 
-const urlServer = "http://localhost:8080/products";
+const urlServer =
+  "https://buttons-p3-challange-1-server.herokuapp.com/products";
 
 export function fetchProducts() {
   return async (dispatch) => {
