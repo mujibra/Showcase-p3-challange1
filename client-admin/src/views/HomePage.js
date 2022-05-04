@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import Table from "../components/Table";
 import Navbar from "../components/Navbar";
 
 export default function HomePage() {
@@ -9,7 +8,6 @@ export default function HomePage() {
         <Navbar />
       </div>
       <div className="basis-10/12 bg-sky-100 h-screen pt-6">
-        <Table />
         <Outlet />
       </div>
     </div>

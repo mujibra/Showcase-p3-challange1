@@ -1,4 +1,34 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { register } from "../store/actionCreators/user";
+
 export default function Example() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [users, setUsers] = useState({
+    email: "",
+    password: "",
+    phoneNumber: 0,
+    address: "",
+  });
+
+  const inputHandle = (e) => {
+    const { name, value } = e.target;
+    setUsers({ ...users, [name]: value });
+  };
+
+  const addProductHandle = (e) => {
+    e.preventDefault();
+    dispatch(register(users))
+      .then((_) => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  };
+
   return (
     <div className="mt-10 sm:mt-0">
       <div className="mb-6 mt-6">
@@ -13,42 +43,10 @@ export default function Example() {
           </div>
         </div>
         <div className="flex justify-center mt-10">
-          <form className="w-2/5">
+          <form onSubmit={addProductHandle} className="w-2/5">
             <div className="shadow overflow-hidden sm:rounded-md">
               <div className="px-4 py-5 bg-white sm:p-6">
                 <div className="grid grid-cols-6 gap-6">
-                  <div className="col-span-6">
-                    <label
-                      htmlFor="first-name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Username
-                    </label>
-                    <input
-                      type="text"
-                      name="first-name"
-                      id="first-name"
-                      autoComplete="given-name"
-                      className="p-3 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    />
-                  </div>
-
-                  <div className="col-span-6">
-                    <label
-                      htmlFor="last-name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      name="last-name"
-                      id="last-name"
-                      autoComplete="family-name"
-                      className="p-3 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                    />
-                  </div>
-
                   <div className="col-span-6">
                     <label
                       htmlFor="email-address"
@@ -57,10 +55,25 @@ export default function Example() {
                       Email address
                     </label>
                     <input
+                      value={users.email}
+                      onChange={inputHandle}
+                      name="email"
                       type="text"
-                      name="email-address"
-                      id="email-address"
-                      autoComplete="email"
+                      className="p-3 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    />
+                  </div>
+                  <div className="col-span-6">
+                    <label
+                      htmlFor="last-name"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Password
+                    </label>
+                    <input
+                      value={users.password}
+                      onChange={inputHandle}
+                      name="password"
+                      type="password"
                       className="p-3 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
@@ -73,10 +86,10 @@ export default function Example() {
                       Phone Number
                     </label>
                     <input
+                      value={users.phoneNumber}
+                      onChange={inputHandle}
+                      name="phoneNumber"
                       type="number"
-                      name="street-address"
-                      id="street-address"
-                      autoComplete="street-address"
                       className="p-3 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>
@@ -89,10 +102,10 @@ export default function Example() {
                       Address
                     </label>
                     <textarea
+                      value={users.address}
+                      onChange={inputHandle}
+                      name="address"
                       type="number"
-                      name="street-address"
-                      id="street-address"
-                      autoComplete="street-address"
                       className="p-3 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
                   </div>

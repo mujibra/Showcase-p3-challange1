@@ -1,5 +1,7 @@
-import useFetch from "../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchProducts } from "../store/actionCreators/products";
 const callouts = [
   {
     name: "New Arrivals",
@@ -31,12 +33,13 @@ const callouts = [
 
 export default function Example() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { products, isLoading, error } = useSelector((state) => state);
+  console.log(products);
 
-  const {
-    data: products,
-    isLoading,
-    isError,
-  } = useFetch("http://localhost:3001/products");
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
   const handleDetail = (id) => {
     navigate(`/detail/${id}`);
@@ -75,10 +78,10 @@ export default function Example() {
       <div className="max-w-2xl mx-auto py-20 px-4 sm:py-20 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl mb-4 font-extrabold text-gray-900">Products</h2>
         <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {isLoading && <p>Loading...</p>}
-          {isError && <p>Error...</p>}
-          {!isLoading &&
-            !isError &&
+          {!isLoading && <p>Loading...</p>}
+          {error && <p>Error...</p>}
+          {isLoading &&
+            !error &&
             products.map((product) => (
               <a
                 onClick={() => handleDetail(product.id)}
