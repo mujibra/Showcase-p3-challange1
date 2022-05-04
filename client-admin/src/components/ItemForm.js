@@ -12,6 +12,13 @@ export default function ItemForm() {
     price: "",
     mainImg: "",
     CategoryId: "",
+    Images: [],
+  });
+
+  const [image, setImage] = useState({
+    image1: "",
+    image2: "",
+    image3: "",
   });
 
   const inputHandle = (e) => {
@@ -19,8 +26,17 @@ export default function ItemForm() {
     setProducts({ ...products, [name]: value });
   };
 
+  const handleImageProduct = (e) => {
+    const { name, value } = e.target;
+    setImage({ ...image, [name]: value });
+  };
+
   const addProductHandle = (e) => {
+    console.log(products);
     e.preventDefault();
+    for (const key in image) {
+      products.Images.push({ img: image[key] });
+    }
     dispatch(createProduct(products))
       .then((_) => {
         navigate("/");
@@ -116,6 +132,57 @@ export default function ItemForm() {
             />
           </div>
 
+          <div className="relative z-0 mb-6 w-full group">
+            <label
+              htmlFor="image"
+              className="block text-sm font-medium text-gray-700"
+            >
+              ImageUrl
+            </label>
+            <input
+              type="text"
+              name="image1"
+              onChange={handleImageProduct}
+              value={image.image1}
+              className="p-2.5 mb-6 mt-1 focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              placeholder=" "
+              required
+            />
+          </div>
+          <div className="relative z-0 mb-6 w-full group">
+            <label
+              htmlFor="image"
+              className="block text-sm font-medium text-gray-700"
+            >
+              ImageUrl
+            </label>
+            <input
+              type="text"
+              name="image2"
+              onChange={handleImageProduct}
+              value={image.image2}
+              className="p-2.5 mb-6 mt-1 focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              placeholder=" "
+              required
+            />
+          </div>
+          <div className="relative z-0 mb-6 w-full group">
+            <label
+              htmlFor="image"
+              className="block text-sm font-medium text-gray-700"
+            >
+              ImageUrl
+            </label>
+            <input
+              type="text"
+              name="image3"
+              onChange={handleImageProduct}
+              value={image.image3}
+              className="p-2.5 mb-6 mt-1 focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              placeholder=" "
+              required
+            />
+          </div>
           <div className="flex justify-center px-4 py-3 text-right sm:px-6">
             <button
               type="submit"

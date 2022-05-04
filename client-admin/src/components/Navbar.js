@@ -1,7 +1,12 @@
 import logo from "../button.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const logoutHandler = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
   return (
     <div className="flex justify-center">
       <div className="flex-shrink-0 bg-white p-5">
@@ -82,12 +87,12 @@ export default function Navbar() {
           </Link>
           <hr className="mb-5 mt-5" />
         </div>
-        <Link
-          to="/login"
+        <button
+          onClick={logoutHandler}
           className="shadow-sm w-full text-white rounded-md hover:bg-blue-500 flex items-center px-5 py-2 transition-colors duration-150 justify-center bg-blue-600"
         >
           <span className="text-sm">Log out</span>
-        </Link>
+        </button>
       </div>
     </div>
   );
