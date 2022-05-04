@@ -4,6 +4,9 @@ const { User } = require("../models");
 const authentication = async (req, res, next) => {
   try {
     const { access_token } = req.headers;
+    if (!access_token) {
+      throw { name: "Forbidden" };
+    }
 
     const payload = readPayloadToken(access_token);
 

@@ -1,4 +1,4 @@
-const { User, Product, Category } = require("../models");
+const { User, Product, Category, Image } = require("../models");
 
 class FoodController {
   static async list(req, res, next) {
@@ -10,6 +10,9 @@ class FoodController {
           },
           {
             model: Category,
+          },
+          {
+            model: Image,
           },
         ],
       });
@@ -74,6 +77,9 @@ class FoodController {
           },
           {
             model: Category,
+          },
+          {
+            model: Image,
           },
         ],
         where: {
