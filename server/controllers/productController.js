@@ -1,4 +1,4 @@
-const { User, Product, Category, Image } = require("../models");
+const { User, Product, Category, Image, sequelize } = require("../models");
 
 class FoodController {
   static async list(req, res, next) {
@@ -93,22 +93,32 @@ class FoodController {
   }
 
   static async create(req, res, next) {
+    const t = await sequelize.transaction();
     try {
-      const { name, description, price, mainImg, CategoryId } = req.body;
-      let result = await Product.create({
-        name,
-        slug: name.split(" ").join("-"),
-        description,
-        price,
-        mainImg,
-        UserId: req.rightUser.id,
-        CategoryId,
-      });
+      const { name, description, price, mainImg, CategoryId, Images } =
+        req.body;
+      console.log(req.body);
+      let result = await Product.create(
+        {
+          name,
+          slug: name.split(" ").join("-"),
+          description,
+          price,
+          mainImg,
+          UserId: req.rightUser.id,
+          CategoryId,
+        },
+        { transaction: t }
+      );
+      Images.map((el) => (el.ProductId = result.id));
+      await Image.bulkCreate(Images, { transaction: t });
+      await t.commit();
       res.status(200).json({
         message: "Success add product",
         newProduct: result,
       });
     } catch (error) {
+      await t.rollback();
       next(error);
     }
   }

@@ -35,7 +35,7 @@ export default function ItemForm() {
     console.log(products);
     e.preventDefault();
     for (const key in image) {
-      products.Images.push({ img: image[key] });
+      products.Images.push({ imgUrl: image[key] });
     }
     dispatch(createProduct(products))
       .then((_) => {
