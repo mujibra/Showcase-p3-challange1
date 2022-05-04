@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3001;
+const port = 8080;
 const cors = require("cors");
 const productRoute = require("./routes/products");
 const UserController = require("./controllers/userController");

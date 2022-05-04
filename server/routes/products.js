@@ -12,12 +12,17 @@ router.get("/", ProductController.list);
 // CREATE FOOD
 router.post("/", ProductController.create);
 
+// CATEGORY
+router.get("/categories", ProductController.categoryList);
+router.post("/categories", ProductController.categoryCreate);
+router.delete("/categories/:id", ProductController.deleteCategory);
+
 // GET FOOD BY ID
 router.get("/:id", ProductController.productId);
 
 // UPDATE FOOD
 router.put("/:id", getAccess, ProductController.editFood);
 
-router.delete("/:id", getAccess, ProductController.delete);
+router.delete("/:id", ProductController.delete);
 
 module.exports = router;

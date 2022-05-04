@@ -19,6 +19,52 @@ class FoodController {
     }
   }
 
+  static async categoryList(req, res, next) {
+    try {
+      let category = await Category.findAll({});
+      res.status(200).json(category);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async categoryCreate(req, res, next) {
+    try {
+      const { name } = req.body;
+      let result = await Category.create({
+        name,
+      });
+      res.status(200).json({
+        message: "Success add category",
+        newCategory: result,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async deleteCategory(req, res, next) {
+    let id = req.params.id;
+    try {
+      let category = await Category.findByPk(id);
+      console.log(category);
+      if (category === null) {
+        next({ name: "NotFound" });
+      } else {
+        Category.destroy({
+          where: {
+            id,
+          },
+        });
+      }
+      res.status(200).json({
+        message: `${category.name} has been delete`,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async productId(req, res, next) {
     try {
       let product = await Product.findOne({
@@ -42,10 +88,10 @@ class FoodController {
 
   static async create(req, res, next) {
     try {
-      const { name, slug, description, price, mainImg, CategoryId } = req.body;
+      const { name, description, price, mainImg, CategoryId } = req.body;
       let result = await Product.create({
         name,
-        slug,
+        slug: name.split(" ").join("-"),
         description,
         price,
         mainImg,
@@ -68,13 +114,12 @@ class FoodController {
         next({ name: "NotFound" });
       } else {
         const { id } = req.params;
-        const { name, slug, description, price, mainImg, CategoryId } =
-          req.body;
+        const { name, description, price, mainImg, CategoryId } = req.body;
         console.log(req.body);
         let update = await Product.update(
           {
             name,
-            slug,
+            slug: name.split(" ").join("-"),
             description,
             price,
             mainImg,

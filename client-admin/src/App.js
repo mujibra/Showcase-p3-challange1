@@ -5,6 +5,7 @@ import Table from "./components/Table";
 import CategoriesTable from "./components/CategoriesTable";
 import ItemForm from "./components/ItemForm";
 import AddUserPage from "./components/AddUserPage";
+import EditProduct from "./components/EditProduct";
 import { Routes, Route } from "react-router-dom";
 import RequiredAuth from "./components/RequireAuth";
 
@@ -20,7 +21,8 @@ function App() {
             </RequiredAuth>
           }
         >
-          <Route path="tableProducts" element={<Table />} />
+          <Route path="edit/:id" element={<EditProduct />} />
+          <Route path="" element={<Table />} />
           <Route path="tableCategories" element={<CategoriesTable />} />
           <Route path="addProduct" element={<ItemForm />} />
           <Route path="addUser" element={<AddUserPage />} />

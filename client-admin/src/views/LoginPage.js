@@ -1,7 +1,34 @@
 import { LockClosedIcon } from "@heroicons/react/solid";
 import logo from "../button.png";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { login } from "../store/actionCreators/user";
 
 export default function Example() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [user, setLogin] = useState({
+    email: "",
+    password: "",
+  });
+  const inputHandle = (e) => {
+    const { name, value } = e.target;
+    setLogin({ ...user, [name]: value });
+  };
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(login(user))
+      .then((data) => {
+        if (!data) {
+          throw new Error("error");
+        }
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       <div>
@@ -18,7 +45,12 @@ export default function Example() {
                 </p>
               </p>
             </div>
-            <form className="mt-8 space-y-6" action="#" method="POST">
+            <form
+              onSubmit={handleLogin}
+              className="mt-8 space-y-6"
+              action="#"
+              method="POST"
+            >
               <input type="hidden" name="remember" defaultValue="true" />
               <div className="rounded-md shadow-sm -space-y-px">
                 <div>
@@ -26,6 +58,8 @@ export default function Example() {
                     Email address
                   </label>
                   <input
+                    value={user.email}
+                    onChange={inputHandle}
                     id="email-address"
                     name="email"
                     type="email"
@@ -40,6 +74,8 @@ export default function Example() {
                     Password
                   </label>
                   <input
+                    value={user.password}
+                    onChange={inputHandle}
                     id="password"
                     name="password"
                     type="password"

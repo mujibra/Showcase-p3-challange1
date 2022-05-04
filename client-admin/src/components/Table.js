@@ -1,13 +1,17 @@
-import useFetch from "../hooks/useFetch";
 import ListTable from "./ListTable";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchProducts } from "../store/actionCreators/products";
 
 export default function Table() {
-  const {
-    data: products,
-    isLoading,
-    isError,
-  } = useFetch("http://localhost:8080/products?_expand=user");
+  const dispatch = useDispatch();
+  const { isLoading, error } = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
@@ -55,18 +59,14 @@ export default function Table() {
               </tr>
             </tbody>
           )}
-          {isError && (
+          {error && (
             <tbody>
               <tr>
                 <td>Error...</td>
               </tr>
             </tbody>
           )}
-          {!isLoading &&
-            !isError &&
-            products.map((product) => (
-              <ListTable product={product} key={product.id}></ListTable>
-            ))}
+          {!isLoading && !error && <ListTable></ListTable>}
         </table>
       </div>
     </>

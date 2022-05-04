@@ -13,10 +13,7 @@ export default function Navbar() {
         </div>
         <hr />
         <div className="p-2 w-full">
-          <Link
-            to="tableProducts"
-            className="flex  text-gray-600 hover:text-blue-600 p-1"
-          >
+          <Link to="" className="flex  text-gray-600 hover:text-blue-600 p-1">
             <svg
               width="24"
               height="24"

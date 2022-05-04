@@ -14,7 +14,6 @@ const authentication = async (req, res, next) => {
     }
     req.rightUser = {
       id: user.id,
-      username: user.username,
       role: user.role,
       email: user.email,
     };

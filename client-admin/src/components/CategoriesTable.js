@@ -1,23 +1,40 @@
-import useFetch from "../hooks/useFetch";
 import ListCategories from "./ListCategories";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchCategories,
+  createCategories,
+} from "../store/actionCreators/category";
 
 export default function Table() {
+  const dispatch = useDispatch();
+  const { isLoading, error } = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+    // eslint-disable-next-line
+  }, [dispatch]);
   let [isOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
 
   function closeModal() {
     setIsOpen(false);
   }
 
-  function openModal() {
-    setIsOpen(true);
-  }
-  const {
-    data: products,
-    isLoading,
-    isError,
-  } = useFetch("http://localhost:8080/products?_expand=user");
+  // eslint-disable-next-line
+  const [name, setName] = useState("");
+
+  const handleAddCategory = (e) => {
+    e.preventDefault();
+    dispatch(createCategories({ name })).then((_) => {
+      setName("");
+      setIsOpen(false);
+    });
+  };
 
   return (
     <>
@@ -75,29 +92,28 @@ export default function Table() {
                   >
                     Add Category
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <div>
-                      <input
-                        id="email-address"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                        placeholder="New Category"
-                      />
+                  <form onSubmit={handleAddCategory}>
+                    <div className="mt-2">
+                      <div>
+                        <input
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          type="text"
+                          name="name"
+                          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                      onClick={closeModal}
-                    >
-                      Add
-                    </button>
-                  </div>
+                    <div className="mt-4">
+                      <button
+                        type="submit"
+                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </Transition.Child>
             </div>
@@ -132,21 +148,14 @@ export default function Table() {
               </tr>
             </tbody>
           )}
-          {isError && (
+          {error && (
             <tbody>
               <tr>
                 <td>Error...</td>
               </tr>
             </tbody>
           )}
-          {!isLoading &&
-            !isError &&
-            products[0].categories.map((category) => (
-              <ListCategories
-                category={category}
-                key={category.id}
-              ></ListCategories>
-            ))}
+          {!isLoading && !error && <ListCategories></ListCategories>}
         </table>
       </div>
     </>
