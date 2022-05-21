@@ -41,7 +41,7 @@ Target:
 - [v] Lecture - React-Router
 - [v] Membuat router user-side (min: home, detail)
 - [v] Membuat router admin-side (min: login, add admin, CRUD main entitas, CRUD another entitas)
-- [ ] Membuat privateRoute untuk admin
+- [v] Membuat privateRoute untuk admin
 
 **Report:**
 
@@ -51,15 +51,15 @@ Target:
 
 Target:
 
-- [ ] Lecture - Redux
-- [ ] State vs Global State
-- [ ] Bagaimana cara membuat Store
-- [ ] Bagaimana cara membuat Reducer
-- [ ] Bagaimana cara membuat Action
-- [ ] Membuat Action Creators
-- [ ] Membuat Action Types
-- [ ] Lecture - Redux-thunk (handle async)
-- [ ] Cara menggunakan combineReducers
+- [v] Lecture - Redux
+- [v] State vs Global State
+- [v] Bagaimana cara membuat Store
+- [v] Bagaimana cara membuat Reducer
+- [v] Bagaimana cara membuat Action
+- [v] Membuat Action Creators
+- [v] Membuat Action Types
+- [v] Lecture - Redux-thunk (handle async)
+- [v] Cara menggunakan combineReducers
 
 **Report:**
 
@@ -69,11 +69,11 @@ Target:
 
 Target:
 
-- [ ] Lecture - SQL Advance DQL
-- [ ] Membuat server mengguanakan express.js, postgreSQL dan Sequelize
-- [ ] Menentukan associations antar tables
-- [ ] Lecture - SQL Transaction
-- [ ] Membuat transaction saat membuat entitas baru pada main table. Pastikan ada assosiasi di dalamnya
+- [v] Lecture - SQL Advance DQL
+- [v] Membuat server mengguanakan express.js, postgreSQL dan Sequelize
+- [v] Menentukan associations antar tables
+- [v] Lecture - SQL Transaction
+- [v] Membuat transaction saat membuat entitas baru pada main table. Pastikan ada assosiasi di dalamnya
 
 **Report:**
 
@@ -83,8 +83,8 @@ Target:
 
 Target:
 
-- [ ] LC Simulation
-- [ ] Practice, Practice, Practice
+- [v] LC Simulation
+- [v] Practice, Practice, Practice
 
 **Report:**
 

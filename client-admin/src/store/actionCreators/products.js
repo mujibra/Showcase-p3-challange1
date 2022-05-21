@@ -115,17 +115,3 @@ export function editProduct(id, product) {
     }
   };
 }
-
-export function setLoading(payload) {
-  return {
-    type: SET_LOADING,
-    payload: payload,
-  };
-}
-
-export function setError(payload) {
-  return {
-    type: SET_ERROR,
-    payload: payload,
-  };
-}
